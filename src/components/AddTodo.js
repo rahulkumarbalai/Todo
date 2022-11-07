@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 
-export default function AddTodo(props) {
+export default function AddTodo({addTodo}) {
   const [title,setTitle]=useState("");
   const [description,setDescription]=useState("");
 
   const submit=(e)=>{
     e.preventDefault();
-    if(title===""){
-      alert("Title required");
+    if(!title.charAt(0).match(/[A-Z]/i)){
+      alert("Title should start with uppercase character");
+    }
+    else if(title.length<=8 || title.length>20){
+      alert("Title length should be between 8-20 characters");
     }
     else if(description===""){
       alert("Description required");
     }
     else{
-      props.addTodo(title,description);
+      addTodo(title,description);
       setTitle("");
       setDescription("");
     }

@@ -23,11 +23,11 @@ function App() {
   }
 
   const addTodo= (title,description)=>{
-    let number=todos.length===0?1:todos.length+1;
+    let number=todos.length+1;
     const newTodo={
-      number:number,
-      title: title,
-      description: description
+      description,
+      number,
+      title,
     }
     setTodos([...todos,newTodo]);
   }
